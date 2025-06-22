@@ -1,10 +1,9 @@
-// src/pages/ChatbotMessages.jsx
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { tokenStorage } from '../../utils/auth';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const ChatbotMessages = () => {
   const { chatbotId } = useParams();
@@ -15,7 +14,6 @@ const ChatbotMessages = () => {
   const [loadingMessages, setLoadingMessages] = useState(false);
   const [error, setError] = useState(null);
 
-  // Function to fetch chat sessions based on chatbotId
   const fetchSessions = useCallback(async () => {
     setLoadingSessions(true);
     setError(null);
@@ -64,7 +62,6 @@ const ChatbotMessages = () => {
     }
   }, [chatbotId]);
 
-  // Function to fetch messages for a specific session
   const fetchMessages = useCallback(async (sessionId) => {
     setLoadingMessages(true);
     setError(null);

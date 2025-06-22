@@ -6,7 +6,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import ErrorDisplay from "../../components/ErrorDisplay";
 import SuccessAlert from "../../components/SuccessAlert";
 
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const ChatbotSettings = () => {
   const { chatbotId } = useParams();

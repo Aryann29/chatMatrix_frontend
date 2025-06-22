@@ -2,34 +2,34 @@ import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { tokenStorage } from '../utils/auth';
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api'; // Your API base URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
-  // State for all UI fields
-  const [chatbotName, setChatbotName] = useState('');
-  const [businessName, setBusinessName] = useState(''); // This will be sent as 'business_name'
-  const [businessType, setBusinessType] = useState(''); // UI only, not sent to backend
-  const [aboutBusiness, setAboutBusiness] = useState('');
-  const [systemPrompt, setSystemPrompt] = useState(''); // UI only, not sent to backend
-  const [llmProvider, setLlmProvider] = useState(''); // UI only, not sent to backend (now dropdown)
-  const [selectedFiles, setSelectedFiles] = useState([]); // Knowledge base files
 
-  const [showManualInput, setShowManualInput] = useState(false); // For system prompt textarea visibility
+  const [chatbotName, setChatbotName] = useState('');
+  const [businessName, setBusinessName] = useState('');
+  const [businessType, setBusinessType] = useState(''); 
+  const [aboutBusiness, setAboutBusiness] = useState('');
+  const [systemPrompt, setSystemPrompt] = useState('');
+  const [llmProvider, setLlmProvider] = useState(''); 
+  const [selectedFiles, setSelectedFiles] = useState([]); 
+
+  const [showManualInput, setShowManualInput] = useState(false); 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
   const fileInputRef = useRef(null);
-  const modalRef = useRef(null); // Ref for modal content to handle clicks outside
+  const modalRef = useRef(null); 
 
-  // Reset form when modal opens/closes
+
   useEffect(() => {
     if (isOpen) {
       resetForm();
     }
   }, [isOpen]);
 
-  // Handle clicks outside the modal content to close it
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target) && isOpen) {
@@ -42,7 +42,7 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
     };
   }, [isOpen, onClose]);
 
-  // Handle Escape key to close modal
+
   useEffect(() => {
     const handleEscapeKey = (event) => {
       if (event.key === 'Escape' && isOpen) {
@@ -68,7 +68,7 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
     setError(null);
     setSuccess(null);
     if (fileInputRef.current) {
-        fileInputRef.current.value = ''; // Clear file input
+        fileInputRef.current.value = ''; 
     }
   };
 
@@ -162,9 +162,9 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
       });
       setSuccess(response.data.message || "Chatbot created successfully!");
       if (onChatbotCreated) {
-        onChatbotCreated(response.data.chatbot_id); // Notify parent component
+        onChatbotCreated(response.data.chatbot_id); 
       }
-      // Give a moment for success message, then close
+     
       setTimeout(() => {
         onClose();
       }, 1500);
@@ -187,9 +187,7 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
     <div
       className="fixed inset-0 bg-black bg-opacity-50 modal-backdrop z-50 flex items-center justify-center p-4"
     >
-      {/* Modal Content - Increased max-w-4xl for a larger modal */}
       <div ref={modalRef} className="bg-neutral-800 rounded-lg p-6 w-full max-w-4xl border border-neutral-700 max-h-[90vh] overflow-y-auto">
-        {/* Modal Header */}
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-xl font-semibold text-white">Create New Chatbot</h3>
           <button onClick={onClose} className="text-neutral-400 hover:text-white transition-colors">
@@ -210,9 +208,7 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
           </div>
         )}
 
-        {/* Form */}
         <form onSubmit={handleCreateChatbot} className="space-y-4">
-          {/* Chatbot Name */}
           <div>
             <label htmlFor="chatbotName" className="block text-sm font-medium text-neutral-300 mb-2">
               Chatbot Name <span className="text-red-400">*</span>
@@ -252,7 +248,6 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
             </select>
           </div> */}
 
-          {/* Business Name (Sent to backend as business_name) */}
           <div>
             <label htmlFor="businessName" className="block text-sm font-medium text-neutral-300 mb-2">
               Business Name <span className="text-red-400">*</span>
@@ -269,7 +264,6 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
             />
           </div>
 
-          {/* About Business */}
           <div>
             <label htmlFor="aboutBusiness" className="block text-sm font-medium text-neutral-300 mb-2">
               About Business <span className="text-red-400">*</span>
@@ -338,7 +332,6 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
             </select>
           </div> */}
 
-          {/* Knowledge Base */}
           <div>
             <label className="block text-sm font-medium text-neutral-300 mb-2">
               Knowledge Base
@@ -363,7 +356,7 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
                   accept=".pdf,.txt,.docx,.md"
                   className="hidden"
                   onChange={handleFileSelect}
-                  ref={fileInputRef} // Assign ref here
+                  ref={fileInputRef} 
                 />
 
                 <div className="space-y-2">
@@ -375,7 +368,7 @@ const CreateChatbotModal = ({ isOpen, onClose, onChatbotCreated }) => {
                 </div>
               </div>
 
-              {/* Selected Files Display */}
+         
               {selectedFiles.length > 0 && (
                 <div id="selectedFiles">
                   <div className="text-sm font-medium text-neutral-300 mb-2">Selected Files:</div>

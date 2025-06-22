@@ -1,11 +1,11 @@
-// ChatBox.jsx
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { tokenStorage } from '../../utils/auth';
 import ReactMarkdown from 'react-markdown';
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const ChatBox = () => {
   const { chatbotId } = useParams();
