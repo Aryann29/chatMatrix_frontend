@@ -27,7 +27,7 @@ const tokenStorage = {
 
 const authAPI = {
   register: async (userData) => {
-    const response = await axios.post(`${API_BASE_URL}/users`, userData, {
+    const response = await axios.post(`${API_BASE_URL}/users/`, userData, {
       headers: {
         'Content-Type': 'application/json'
       }
