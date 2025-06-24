@@ -22,7 +22,7 @@ const Login = () => {
 
     try {
       await authAPI.login(credentials);
-      navigate('/dashboard');
+      navigate('/dashboard/my-chatbots');
     } catch (err) {
       console.error('Login failed:', err);
 
