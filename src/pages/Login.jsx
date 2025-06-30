@@ -45,6 +45,9 @@ const Login = () => {
           </svg>
         </div>
         <h1 className="text-4xl font-extrabold text-white mb-2">ChatSass</h1>
+        <p className="text-black  text-lg">for testing </p>
+        <p className="text-black text-lg">Email: <span className='text-red-400 '>test@gmail.com </span></p>
+        <p className="text-black  text-lg">Password:<span className='text-red-400 '> 123456</span>  </p>
         <p className="text-gray-400 text-lg">Sign in to your account</p>
       </div>
 

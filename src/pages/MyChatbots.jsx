@@ -55,7 +55,7 @@ const MyChatbots = () => {
   };
 
   const handleView = (chatbotId) => {
-    navigate(`/dashboard/chatbots/${chatbotId}/messages`);
+    navigate(`/dashboard/chatbots/${chatbotId}/chat`);
   };
 
   const handleEdit = (chatbotId) => {
@@ -100,7 +100,7 @@ const MyChatbots = () => {
   }
 
   return (
-    <div className="text-white p-4 sm:p-8"> {/* Added sm:p-8 for better spacing on larger screens */}
+    <div className="text-white p-4 sm:p-8"> 
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">My Chatbots</h1>
 
@@ -131,7 +131,7 @@ const MyChatbots = () => {
         <div className="bg-neutral-800 p-8 rounded-lg text-center border border-neutral-700">
           <p className="text-gray-400 text-lg mb-4">You don't have any chatbots yet.</p>
           <button
-            onClick={() => setIsModalOpen(true)} // Open modal on click
+            onClick={() => setIsModalOpen(true)} 
             className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center mx-auto"
           >
             <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -157,7 +157,7 @@ const MyChatbots = () => {
                       <p className="text-sm text-neutral-400">{chatbot.business_name}</p>
                     </div>
                   </div>
-                  <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium ml-auto">Active</span> {/* Added ml-auto to push status to the right */}
+                  <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium ml-auto">Active</span> 
                 </div>
 
                 <div className="space-y-2 mb-4 text-sm">
@@ -173,19 +173,19 @@ const MyChatbots = () => {
                       {new Date(chatbot.updated_at).toLocaleDateString()}
                     </span>
                   </div>
-                  {/* These fields might be dynamic based on actual data you receive */}
+                 
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Messages:</span>
-                    <span className="text-white">{chatbot.total_messages || '0'}</span> {/* Assuming you'll get this from API */}
+                    <span className="text-white">{chatbot.total_messages || '0'}</span> 
                   </div>
                   <div className="flex justify-between">
                     <span className="text-neutral-400">Impressions:</span>
-                    <span className="text-white">{chatbot.total_impressions || '0'}</span> {/* Assuming you'll get this from API */}
+                    <span className="text-white">{chatbot.total_impressions || '0'}</span> 
                   </div>
                 </div>
               </div>
 
-              <div className="flex space-x-2 mt-4"> {/* Added mt-4 for spacing from details */}
+              <div className="flex space-x-2 mt-4"> 
                 <button
                   onClick={() => handleView(chatbot.chatbot_id)}
                   className="flex-1 bg-neutral-700 hover:bg-neutral-600 text-white py-2 px-3 rounded-lg text-sm transition-colors duration-200"
