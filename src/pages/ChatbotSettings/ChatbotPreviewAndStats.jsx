@@ -3,7 +3,7 @@ const ChatbotPreviewAndStats = ({ chatbotName }) => {
   return (
     <div className="space-y-6">
 
-      <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700">
+      {/* <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700">
         <h3 className="text-lg font-semibold text-white mb-4">Embed Code</h3>
         <div className="space-y-3">
           <p className="text-neutral-400 text-sm">Copy this code to embed your chatbot on your website</p>
@@ -23,7 +23,7 @@ const ChatbotPreviewAndStats = ({ chatbotName }) => {
           </div>
           <button onClick={() => {navigator.clipboard.writeText(`<script src="https://chatsass.com/embed.js"></script>\n<div id="chatsass-widget" data-bot-id="cs-bot-123" data-theme="dark"></div>`); alert('Embed code copied!');}} className="w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg transition-colors duration-200">Copy Code</button>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );

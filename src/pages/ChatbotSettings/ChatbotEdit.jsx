@@ -55,7 +55,7 @@ const ChatbotEdit = () => {
       });
 
       try {
-        const filesResponse = await axios.get(`${API_BASE_URL}/chatbots/${chatbotId}/files`, {
+        const filesResponse = await axios.get(`${API_BASE_URL}/chatbots/${chatbotId}/files/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
