@@ -167,7 +167,7 @@ const ChatbotMessages = () => {
             <h2 className="text-3xl font-bold text-white mb-2">Messages for {chatbotId}</h2>
             <p className="text-neutral-400">View conversation history and user interactions</p>
           </div>
-          <div className="flex space-x-3">
+          {/* <div className="flex space-x-3">
             <select className="px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
               <option>Customer Support Bot</option>
               <option>Healthcare Assistant</option>
@@ -179,7 +179,7 @@ const ChatbotMessages = () => {
               </svg>
               <span>Export</span>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
